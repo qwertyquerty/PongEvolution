@@ -7,7 +7,7 @@ from config import *
 class Ball():
     def __init__(self,game):
         self.game = game
-        self.pos = v(randint(BALLRADIUS+10,SCREENSIZE[1]-BALLRADIUS-10),20)
+        self.pos = v(randint(BALLRADIUS+10,SCREENSIZE[0]-BALLRADIUS-10),20)
         self.rect = pg.Rect(0,0,BALLRADIUS*2,BALLRADIUS*2)
         self.rect.center = (self.pos.x,self.pos.y)
         self.vel = v(choice([-1,1]),1)
