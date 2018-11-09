@@ -59,17 +59,11 @@ class Paddle():
             self.pos = v(*self.rect.center)
 
         if self.rect.colliderect(self.ball.rect):
-            if (self.ball.rect.bottom - self.ball.vel.y*self.game.ballspeed) <= self.rect.top:
-                self.ball.vel.y = -1
-                self.ball.rect.bottom = self.rect.top
-                self.ball.pos = v(*self.ball.rect.center)
-            else:
-                if self.ball.vel.x == 1:
-                    self.ball.vel.x = -1
-                    self.ball.rect.right = self.rect.left
-                elif self.ball.vel.x == -1:
-                    self.ball.vel.x = 1
-                    self.ball.rect.left = self.rect.right
+        
+            self.ball.vel.y = -1
+            self.ball.rect.bottom = self.rect.top
+            self.ball.pos = v(*self.ball.rect.center)
+
             self.ball.pos = v(*self.ball.rect.center)
 
 
