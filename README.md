@@ -13,6 +13,7 @@ Neural nets learn to play pong using the genetic algorithm.
 - `DIFFICULTY_RATE` *(number)*: The rate at which the ball speed increases each frame
 - `POPULATION_SIZE` *(number)*: The size of the population
 - `MUTATION_RATE` *(number)*: The rate at which the organisms mutate
+- `FPS_CAP` *(number)*: The maximum FPS to run at. -1 for no max
 
 ### Run main.py
 
