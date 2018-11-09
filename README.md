@@ -18,3 +18,4 @@ Neural nets learn to play pong using the genetic algorithm.
 
 - Use `alt` to show the neural net of the winner of the previous generation
 - Use `shift` to kill every organism in the current generation
+- Hold `w` to only show the previous generation's best player
