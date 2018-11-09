@@ -13,26 +13,26 @@ class Ball():
         self.vel = v(choice([-1,1]),1)
 
     def update(self):
-        self.pos.y += self.vel.y*self.game.ballspeed
-        self.pos.x += self.vel.x*self.game.ballspeed
+        self.pos += self.vel*self.game.ballspeed
 
-        if abs(self.vel.y*self.game.ballspeed)!=abs(self.vel.x*self.game.ballspeed):
-            print(self.vel)
         self.rect.center = (self.pos.x,self.pos.y)
 
         if self.rect.right > SCREENSIZE[0]:
             self.vel.x = -1
             self.rect.right = SCREENSIZE[0]
+            self.pos = v(*self.rect.center)
         elif self.rect.left < 0:
             self.vel.x = 1
             self.rect.left = 0
+            self.pos = v(*self.rect.center)
         if self.rect.top < 0:
             self.vel.y = 1
             self.rect.top = 0
+            self.pos = v(*self.rect.center)
         elif self.rect.bottom > SCREENSIZE[1]:
             self.player.die()
 
-        self.pos = v(*self.rect.center)
+
 
 
     def reset(self):
@@ -51,8 +51,12 @@ class Paddle():
 
     def update(self):
         self.rect.center = (self.pos.x,self.pos.y)
-        if self.rect.right > SCREENSIZE[0]: self.rect.right = SCREENSIZE[0]
-        elif self.rect.left < 0: self.rect.left = 0
+        if self.rect.right > SCREENSIZE[0]:
+            self.rect.right = SCREENSIZE[0]
+            self.pos = v(*self.rect.center)
+        elif self.rect.left < 0:
+            self.rect.left = 0
+            self.pos = v(*self.rect.center)
 
         if self.rect.colliderect(self.ball.rect):
             if (self.ball.rect.bottom - self.ball.vel.y*self.game.ballspeed) <= self.rect.top:
@@ -68,7 +72,7 @@ class Paddle():
                     self.ball.rect.left = self.rect.right
             self.ball.pos = v(*self.ball.rect.center)
 
-        self.pos = v(*self.rect.center)
+
 
     def reset(self):
         self.pos = v(SCREENSIZE[0]//2,SCREENSIZE[1]-20)

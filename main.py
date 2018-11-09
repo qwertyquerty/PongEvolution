@@ -10,7 +10,7 @@ pg.event.set_allowed([pg.QUIT, pg.KEYDOWN])
 
 
 g = Game()
-
+clock = pg.time.Clock()
 
 while 1:
     for event in pg.event.get():
@@ -25,5 +25,9 @@ while 1:
                 if g.population.winner:
                     show_player_net(g.population.winner)
 
+
+
+    keys = pg.key.get_pressed()
     g.update()
-    g.draw(screen)
+    g.draw(screen,keys[pg.K_w])
+    clock.tick(FPS_CAP)

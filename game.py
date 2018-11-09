@@ -26,12 +26,19 @@ class Game():
             self.ballspeed = DEFAULT_BALLSPEED
             self.population.gen()
 
-    def draw(self,surf):
+    def draw(self,surf,winner_only=False):
         surf.fill(BLACK)
-        for player in self.population.players:
-            if player.alive:
-                pg.draw.rect(surf,player.color,player.paddle.rect,2)
-                pg.draw.circle(surf,player.color,(int(player.ball.pos.x),int(player.ball.pos.y)), BALLRADIUS, 2)
+        if not winner_only:
+            for player in self.population.players:
+                if player.alive:
+                    pg.draw.rect(surf,player.color,player.paddle.rect,2)
+                    pg.draw.circle(surf,player.color,(int(player.ball.pos.x),int(player.ball.pos.y)), BALLRADIUS, 2)
+        else:
+            winner = self.population.winner
+            if winner and winner.alive:
+                pg.draw.rect(surf,winner.color,winner.paddle.rect,2)
+                pg.draw.circle(surf,winner.color,(int(winner.ball.pos.x),int(winner.ball.pos.y)), BALLRADIUS, 2)
+
         surf.blit(font.render("Generation: {}".format(self.population.generation), False, WHITE), (0,0))
         surf.blit(font.render("Score: {}".format(self.score), False, WHITE), (0,20))
         surf.blit(font.render("Alive: {}/{}".format(self.population.living,self.population.size), False, WHITE), (0,40))
