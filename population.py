@@ -50,7 +50,7 @@ class Player():
         self.alive = True
         self.neural_net = Neural_Network(4,2,4,1)
         self.score = 0
-        self.color=(randint(0,100)*2+50,randint(0,100)*2+50,randint(0,100)*2+50)
+        self.color=(int(randint(0,POPULATION_SIZE)*(200/POPULATION_SIZE)+50),int(randint(0,POPULATION_SIZE)*(200/POPULATION_SIZE)+50),int(randint(0,POPULATION_SIZE)*(200/POPULATION_SIZE)+50))
 
     def reset(self):
         self.score = 0
