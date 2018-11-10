@@ -35,7 +35,7 @@ def draw_neural_net(ax, left, right, bottom, top, net, layer_text=None):
                 ax.add_artist(line)
 
 def show_player_net(winner):
-    node_text = ['ball x > or < paddle x', 'ball y > or < half screen y', 'ball dir x', 'ball dir y','','','','','paddle vel left', 'paddle vel right']
+    node_text = ['ball x > or < paddle x', 'ball y > or < half screen y', 'ball dir x', 'ball dir y', 'paddle x > or < half screen x','','','','','','paddle vel left', 'paddle vel right']
     fig = plt.figure(figsize=(8, 8))
     ax = fig.gca()
     draw_neural_net(ax, .1, .9, .1, .9, winner.neural_net, node_text)
