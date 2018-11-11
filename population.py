@@ -48,7 +48,7 @@ class Player():
         self.paddle = Paddle(game,self.ball)
         self.paddle.player = self
         self.alive = True
-        self.neural_net = Neural_Network(5,2,5,1)
+        self.neural_net = Neural_Network(5,2,HIDDENNODES,1)
         self.score = 0
         self.color=(int(randint(0,POPULATION_SIZE)*(200/POPULATION_SIZE)+50),int(randint(0,POPULATION_SIZE)*(200/POPULATION_SIZE)+50),int(randint(0,POPULATION_SIZE)*(200/POPULATION_SIZE)+50))
 
@@ -76,10 +76,10 @@ class Player():
     def update(self):
         input = [
             -1 if self.paddle.pos.x > self.ball.pos.x else 1,
-            -1 if self.ball.pos.y > SCREENSIZE[1]//2 else 1,
+            (self.ball.pos.y - HALFSCREENSIZE[1])/HALFSCREENSIZE[1],
             self.ball.vel.x,
             self.ball.vel.y,
-            -1 if self.paddle.pos.x > SCREENSIZE[0]//2 else 1,
+            (self.paddle.pos.x - HALFSCREENSIZE[0])/HALFSCREENSIZE[0]
         ]
         choices = self.get_choices(input)
         self.paddle.pos.x += abs(choices[0]*PLAYERSPEED)

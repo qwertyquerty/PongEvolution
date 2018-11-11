@@ -8,6 +8,7 @@ Neural nets learn to play pong using the genetic algorithm.
 - `SCREENSIZE` *(tuple)*: The size of the screen (w,h)
 - `PADDLESIZE` *(tuple)*: The default paddle dimensions
 - `PLAYERSPEED` *(number)*: The maximum speed the paddles can travel at
+- `HIDDENNODES` *(int)*: The number of hidden nodes each player's neural net contains
 - `BALLRADIUS` *(number)*: The radius of the balls
 - `DEFAULT_BALLSPEED` *(number)*: The base speed the balls start at
 - `DIFFICULTY_RATE` *(number)*: The rate at which the ball speed increases each frame

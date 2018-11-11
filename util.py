@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 from neuralnet import Neural_Network
 
+from config import *
 
 mpl.rcParams['toolbar'] = 'None'
 def draw_neural_net(ax, left, right, bottom, top, net, layer_text=None):
@@ -34,9 +35,9 @@ def draw_neural_net(ax, left, right, bottom, top, net, layer_text=None):
                 line = plt.Line2D([n*h_spacing + left, (n + 1)*h_spacing + left], [layer_top_a - m*v_spacing, layer_top_b - o*v_spacing], linewidth=abs(weight*7)+1, c= (1 if weight > 0 else 0, 0, 1 if -weight > 0 else 0))
                 ax.add_artist(line)
 
-def show_player_net(winner):
-    node_text = ['ball x > or < paddle x', 'ball y > or < half screen y', 'ball dir x', 'ball dir y', 'paddle x > or < half screen x','','','','','','paddle vel left', 'paddle vel right']
+def show_player_net(player):
+    node_text = ['ball x > or < paddle x', 'ball y normalized', 'ball dir x', 'ball dir y', 'paddle x normalized']+(['']*player.neural_net.no_of_hidden_nodes)+['paddle vel left', 'paddle vel right']
     fig = plt.figure(figsize=(8, 8))
     ax = fig.gca()
-    draw_neural_net(ax, .1, .9, .1, .9, winner.neural_net, node_text)
+    draw_neural_net(ax, .1, .9, .1, .9, player.neural_net, node_text)
     plt.show()
